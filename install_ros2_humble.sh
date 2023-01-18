@@ -27,11 +27,6 @@ sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key  -
 sudo sh -c 'echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu jammy main" | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null'
 
 echo "[Install ROS 2 packages]"
-sudo apt install -y g++
-sudo apt install -y python3-opencv
-sudo apt purge -y libsdl2-2.0-0
-sudo apt install -y libsdl2-2.0-0
-sudo apt install -y libsdl2-dev
 sudo apt update && sudo apt install -y ros-$name_ros_version-desktop
 
 echo "[Environment setup]"
