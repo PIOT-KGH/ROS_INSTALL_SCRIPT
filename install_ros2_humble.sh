@@ -27,7 +27,7 @@ sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key  -
 sudo sh -c 'echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu jammy main" | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null'
 
 echo "[Install ROS 2 packages]"
-sudo apt update && sudo apt install -y ros-$name_ros_version-desktop ros-$name_ros_version-camera-info-manager ros-$name_ros_version-image-publisher ros-$name_ros_version-magic-enum ros-$name_ros_version-robot-localization libuvc-dev ros-$name_ros_version-nav2-* libqt5serialport5-dev libgoogle-glog-dev nlohmann-json3-dev libpcap-dev
+sudo apt update && sudo apt install -y ros-$name_ros_version-desktop ros-$name_ros_version-camera-info-manager ros-$name_ros_version-image-publisher ros-$name_ros_version-magic-enum ros-$name_ros_version-robot-localization libuvc-dev ros-$name_ros_version-nav2-* ros-$name_ros_version-octomap-* ros-$name_ros_version-slider-publisher libqt5serialport5-dev libgoogle-glog-dev nlohmann-json3-dev libpcap-dev libasio-dev
 
 echo "[Environment setup]"
 source /opt/ros/$name_ros_version/setup.sh
@@ -46,7 +46,7 @@ sh -c "echo \"alias gp='git pull'\" >> ~/.bashrc"
 
 sh -c "echo \"alias cw='cd ~/$name_colcon_workspace'\" >> ~/.bashrc"
 sh -c "echo \"alias cs='cd ~/$name_colcon_workspace/src'\" >> ~/.bashrc"
-sh -c "echo \"alias cb='cd ~/$name_colcon_workspace && colcon build --symlink-install && source ~/.bashrc'\" >> ~/.bashrc"
+sh -c "echo \"alias cb='cd ~/$name_colcon_workspace && colcon build --symlink-install --executor sequential && source ~/.bashrc'\" >> ~/.bashrc"
 
 sh -c "echo \"source /opt/ros/$name_ros_version/setup.bash\" >> ~/.bashrc"
 sh -c "echo \"source ~/$name_colcon_workspace/install/local_setup.bash\" >> ~/.bashrc"
